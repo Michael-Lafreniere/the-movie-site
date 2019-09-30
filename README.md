@@ -36,7 +36,7 @@ The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [
 - [ ] When you click on a movie quote it should bring up the detailed movie information
 - [ ] Detect when data hasn't finished loading from [TMDb](https://www.themoviedb.org) and delay rendering component
 
-## Authors
+## Author
 
 [**Michael Lafreniere**](https://github.com/Michael-Lafreniere)
 
