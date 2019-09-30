@@ -1,26 +1,53 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import QuoteTicker from './components/QuoteTicker';
+import Cards from './components/Cards';
+import Footer from './components/Footer';
+import { getTMDbPopularMovies, throwCommonError } from './api';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    this.movieSearch = this.movieSearch.bind(this);
+    this.state = {
+      movieID: 0
+    };
+  }
+
+  componentDidMount() {
+    fetch(getTMDbPopularMovies())
+      .then(res => res.json())
+      .then(movies => {
+        this.setState({
+          movieList: movies['results']
+        });
+      })
+      .catch(err => {
+        throwCommonError(err);
+      });
+  }
+
+  movieSearch(movieID = 0) {
+    this.setState({ movieID });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header movieSearch={this.movieSearch} />
+
+        <QuoteTicker />
+        <Cards
+          movies={this.state.movieList}
+          movieID={this.state.movieID}
+          movieSearch={this.movieSearch}
+        />
+
+        <Footer />
+      </div>
+    );
+  }
 }
 
 export default App;

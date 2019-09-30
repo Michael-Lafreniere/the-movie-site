@@ -1,0 +1,24 @@
+:root {
+  /* Site Colors */
+  --react-color: #61dafb;
+  --tmdb-color: #01d277;
+
+  /* See: E://Media Assets/Web Dev/Color Schemes/ */
+  --main-bg-color: #0b0c10;
+  --text-color: #66fcf1;
+  --alt-text-color: rgb(69, 162, 158);
+  --alt-bg-color: rgba(69, 162, 158, 0.95);
+  --dark-accent: #1f2833;
+  --darker-accent: #161c24;
+  --light-accent: #c5c6c7;
+
+  /* Alternative Coloring */
+  /* --main-bg-color: #222629;
+  --text-color: #86c232;
+  --alt-text-color: #61892f;
+  --dark-accent: #474b4f;
+  --light-accent: #6b6e70; */
+
+  /* Common variables */
+  --header-min-height: 5vh;
+}

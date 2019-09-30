@@ -1,33 +1,1012 @@
-.App {
-  text-align: center;
+@import url('./css/common.css');
+
+* {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  background-color: var(--main-bg-color);
 }
 
-.App-logo {
-  animation: App-logo-spin infinite 20s linear;
-  height: 40vmin;
-  pointer-events: none;
+body {
+  overflow: hidden;
+  font-family: Lato, sans-serif;
+  z-index: 100;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+::-webkit-scrollbar {
+  display: none;
+}
+
+/* COMMON STYLES: */
+
+.scroll-down-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-top: 5px solid var(--text-color);
+  background: transparent;
+  position: relative;
+  bottom: -9.75rem;
+  left: 45%;
+}
+
+.scroll-up-arrow {
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 5px solid var(--text-color);
+  background: transparent;
+  position: relative;
+  bottom: -9.75rem;
+  left: 45%;
+}
+
+.card-scroll-position {
+  bottom: -11.25rem;
+}
+
+.review-scroll-position {
+  bottom: -8.5rem;
+}
+
+#no_text {
+  text-indent: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  background-color: transparent;
+  color: transparent;
+}
+
+.text {
+  color: var(--text-color);
+}
+
+.alt-text {
+  color: var(--alt-text-color);
+}
+
+.white-to-yellow-hover-text {
   color: white;
+  transition: color 1s;
 }
 
-.App-link {
-  color: #61dafb;
+.white-to-yellow-hover-text:hover {
+  color: yellow;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+#white-text {
+  color: #fff;
+}
+
+#green-text {
+  color: rgb(0, 220, 0);
+}
+
+#yellow-text {
+  color: rgb(220, 220, 0);
+}
+
+#red-text {
+  color: rgb(220, 0, 0);
+}
+
+.animate-link {
+  display: inline-block;
+  text-decoration: none;
+}
+
+.animate-link::after {
+  content: '';
+  display: block;
+  width: 0;
+  height: 2px;
+  background: rgb(220, 220, 0);
+  transition: width 0.6s;
+}
+
+.animate-link:hover::after {
+  width: 100%;
+  /* transition: width .3s; */
+}
+
+.close-button {
+  color: red;
+  border: none;
+  font-size: 2rem;
+  cursor: pointer;
+  border-radius: 50%;
+  background: transparent;
+  outline: none;
+}
+
+.card-shaded-background {
+  position: fixed;
+  z-index: 500;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  margin: 0;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.transparent-background {
+  background: transparent;
+}
+
+/* HEADER STYLING: */
+
+header {
+  display: grid;
+  grid-template-columns: auto 25%;
+  min-height: var(--header-min-height);
+  height: 100%;
+}
+
+header h1 {
+  margin-top: 10px;
+  width: 135%;
+  text-align: center;
+  color: var(--text-color);
+}
+
+header .search-input {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+header .search-input input[type='text'] {
+  background: url('./search-icon.png') no-repeat 10px 8px #444;
+  height: 20px;
+  color: var(--alt-text-color);
+  border: 1px solid var(--alt-text-color);
+  width: 25%;
+  padding: 6px 15px 6px 30px;
+  border-radius: 20px;
+  margin: 3px 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-transition: all 0.7s ease 0s;
+  -moz-transition: all 0.7s ease 0s;
+  -o-transition: all 0.7s ease 0s;
+  transition: all 0.7s ease 0s;
+}
+
+header .search-input input[type='text']:focus {
+  background-color: var(--alt-text-color);
+  border-bottom: 1px solid var(--alt-text-color);
+  color: var(--dark-accent);
+  width: 95%;
+  outline: none;
+}
+
+.autocomplete-list-item {
+  width: 100%;
+  color: var(--light-accent);
+  padding: 1%;
+  cursor: pointer;
+  background: rgba(0, 0, 0, 0.45);
+  transition: all 0.2s ease 0s;
+  z-index: inherit;
+}
+
+.autocomplete-list-item:hover {
+  color: white;
+  background-color: var(--alt-bg-color);
+}
+
+/* QUOTE TICKER: */
+
+.quote-ticker {
+  width: 100%;
+}
+
+.quote-ticker .quote {
+  box-shadow: inset 0 -15px 30px rgba(0, 0, 0, 0.4),
+    0 5px 10px rgba(0, 0, 0, 0.5);
+  width: 50%;
+  height: 30px;
+  margin: 20px auto;
+  overflow: hidden;
+  border-radius: 4px;
+  padding: 3px;
+  -webkit-user-select: none;
+}
+
+.quote-ticker .quote span {
+  color: var(--text-color);
+  float: left;
+  padding: 6px;
+  position: relative;
+  top: 1%;
+  border-radius: 4px;
+  box-shadow: inset 0 -15px 30px rgba(0, 0, 0, 0.4);
+  -webkit-font-smoothing: antialiased;
+  cursor: pointer;
+}
+
+.quote-ticker .quote ul {
+  float: left;
+  padding-left: 20px;
+  animation: ticker 20s cubic-bezier(1, 0, 0.5, 0) infinite;
+  width: 100%;
+  background: transparent;
+}
+
+.quote-ticker .quote ul li {
+  line-height: 30px;
+  list-style: none;
+  background: transparent;
+}
+
+.quote-ticker .quote ul li a {
+  color: var(--alt-text-color);
+  text-decoration: none;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  -webkit-font-smoothing: antialiased;
+  padding-left: 5.75rem;
+  background: transparent;
+}
+
+.quote-ticker .quote ul:hover {
+  animation-play-state: paused;
+}
+.quote-ticker .quote span:hover + ul {
+  animation-play-state: paused;
+}
+
+cite::before {
+  content: ' --';
+}
+
+cite {
+  color: var(--light-accent);
+}
+
+/* MAIN SITE STYLING: */
+
+.cards {
+  display: grid;
+  height: 80vh;
+  padding: 10px 10px;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-template-rows: repeat(2000, minmax(275px, 1fr));
+  grid-gap: 10px 10px;
+}
+
+.cards .card {
+  display: grid;
+  grid-template-columns: 40% auto;
+  grid-template-rows: 15% 12% auto 10%;
+  grid-template-areas:
+    'header header'
+    'poster catagories'
+    'poster writeup'
+    'poster release-date';
+  border-radius: 5px;
+  border: 1px solid var(--alt-text-color);
+  color: var(--light-accent);
+  background-color: var(--dark-accent);
+  padding: 0 5px;
+  height: 100%;
+  transition: all 0.2s linear;
+}
+
+.cards .card:hover {
+  cursor: pointer;
+  border: 1px solid var(--text-color);
+  background-color: var(--darker-accent);
+}
+
+.card .card-header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 10% auto 15%;
+  grid-template-areas: 'imdb title votes';
+  background-color: inherit;
+}
+
+/* .cards .card .card-header {
+} */
+
+.cards .card .card-header .imdb_logo {
+  grid-area: imdb;
+  position: relative;
+  background-color: transparent;
+  background-image: url(IMDb_logo.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  top: 5px;
+  /* z-index: 10; */
+}
+
+.cards .card .card-header .title-area {
+  grid-area: title;
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1%;
+}
+
+.cards .card .card-header .title {
+  color: var(--text-color);
+  background-color: inherit;
+}
+
+.cards .card .card-header .genre-list {
+  font-size: 10px;
+  color: var(--light-accent);
+  background-color: inherit;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card .card-header .votes {
+  grid-area: votes;
+  font-size: 0.85rem;
+  padding-top: 3px;
+  color: #fff;
+  background-color: inherit;
+}
+
+.cards .card .user-score {
+  float: right;
+  font-size: 0.65rem;
+  color: var(--light-accent);
+  background-color: inherit;
+}
+
+.cards .card .vote {
+  float: right;
+  margin-top: -3px;
+  background-color: inherit;
+}
+
+.cards .card .percent {
+  float: right;
+  font-size: 0.65rem;
+  margin-top: -3px;
+  padding-left: 1%;
+  background-color: inherit;
+}
+
+.cards .card img {
+  grid-area: poster;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  background-color: inherit;
+}
+
+.cards .card .catagories {
+  grid-area: catagories;
+  font-size: 13px;
+  /* color: var(--light-accent); */
+  background-color: inherit;
+}
+
+.cards .card .writeup {
+  grid-area: writeup;
+  margin-top: 5px;
+  height: 93%;
+  background-color: inherit;
+  color: var(--light-accent);
+}
+
+.cards .card .writeup .tagline {
+  font-size: 13px;
+  color: var(--text-color);
+  background-color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cards .card .writeup p {
+  color: var(--light-accent);
+  background-color: inherit;
+  line-height: 1.15;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  height: 9rem;
+  margin-block-start: 0.5em;
+  margin-block-end: 1em;
+}
+
+.cards .card .writeup p::-webkit-scrollbar {
+  display: inline-block;
+}
+
+.cards .card .release-date {
+  display: flex;
+  font-size: 13px;
+  justify-content: flex-end;
+  background-color: inherit;
+}
+
+.cards .card .release-date span {
+  display: block;
+  background-color: inherit;
+}
+
+/* Popup box styling: */
+
+.popup {
+  display: block;
+  z-index: 5;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  overflow-x: hidden;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+/* MOVIE DETAIL CARD STYLING: */
+
+.movie-detail-outer-box {
+  position: relative;
+  z-index: 100;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  border-radius: 10px;
+  margin: 0;
+  overflow-y: none;
+}
+
+.movie-details-inner-box {
+  position: relative;
+  display: grid;
+  grid-template-rows: 15% auto 12% 30% 25%;
+  grid-template-columns: 35% 32.5% 32.5%;
+  grid-template-areas:
+    'poster title-tagline title-tagline'
+    'poster writeup writeup'
+    'poster catagories-companies catagories-companies'
+    'poster cast cast'
+    'poster extra extra';
+  position: fixed;
+  z-index: 50;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-color: transparent;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.movie-detail-close-button-position {
+  position: fixed;
+  top: 18.5%;
+  left: 79%;
+}
+
+.movie-details-inner-box .poster {
+  grid-area: poster;
+}
+
+.movie-details-inner-box .title-tagline {
+  grid-area: title-tagline;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .title-tagline h1 {
+  color: white;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-inner-box .title-tagline span {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+/* Movie Writeup: */
+
+.movie-details-inner-box .writeup {
+  grid-area: writeup;
+  line-height: 1.15;
+  padding: 0 5%;
+  overflow-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .writeup span {
+  color: white;
+  background-color: transparent;
+}
+
+/* Catagories & Companies: */
+
+.movie-details-inner-box .catagories-companies {
+  grid-area: catagories-companies;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-left: 5%;
+  padding-top: 1.5%;
+}
+
+.movie-details-inner-box .catagories-companies .catagories {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .catagories-companies .company {
+  color: white;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+/* Cast: */
+
+.movie-details-inner-box .cast {
+  grid-area: cast;
+  position: relative;
+  font-size: 0.85rem;
+  padding-left: 2%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cast-info {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast img {
+  display: block;
+  border-radius: 20%;
+  width: 75%;
+  margin: auto;
+}
+
+.movie-details-inner-box .cast .character-name {
+  font-size: 0.65rem;
+  word-break: keep-all;
+}
+
+.movie-details-inner-box .cast ul {
+  display: flex;
+  height: 82%;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast li {
+  width: 100px;
+  height: 100%;
+  text-decoration: none;
+  word-break: keep-all;
+  padding-left: 2%;
+  padding-bottom: 2%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast span {
+  background-color: transparent;
+}
+
+/******************************/
+
+/* Extra (profit, release date, run time, etc): */
+
+.movie-details-inner-box .extra {
+  display: grid;
+  grid-area: extra;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 25% auto 25%;
+  grid-template-areas:
+    'runtime trailer release-date'
+    'profit reviews user-rating';
+  font-size: 1.15rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .extra span {
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .runtime {
+  grid-area: runtime;
+  padding-left: 17%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .trailer {
+  grid-area: trailer;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .trailer span {
+  cursor: pointer;
+  height: 1.5rem;
+  background: inherit;
+}
+
+.play-button {
+  color: var(--alt-text-color);
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .release-date {
+  grid-area: release-date;
+  position: relative;
+  float: right;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .profit {
+  grid-area: profit;
+  padding-left: 17%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .reviews {
+  grid-area: reviews;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  padding-top: 3%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .reviews span {
+  cursor: pointer;
+  background: inherit;
+}
+
+.movie-details-inner-box .extra .user-rating {
+  grid-area: user-rating;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.float-right {
+  float: right;
+  padding-right: 25%;
+  background: transparent;
+}
+
+/* DETAILED CAST CARD: */
+
+.cast-card {
+  display: grid;
+  grid-template-rows: 15% 65% auto;
+  grid-template-columns: 40% auto;
+  grid-template-areas:
+    'image name'
+    'image bio'
+    'social personal';
+  position: relative;
+  z-index: inherit;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  border: 2px solid rgb(140, 140, 140);
+  background-color: black;
+}
+
+.cast-card strong {
+  background: transparent;
+}
+
+.cast-card-close-button-position {
+  position: fixed;
+  top: 21.25%;
+  left: 73.75%;
+}
+
+.cast-card .image {
+  grid-area: image;
+  border-radius: 2%;
+  margin: 3%;
+}
+
+.cast-card .name {
+  grid-area: name;
+  font-size: 1.75rem;
+  padding-top: 2%;
+  color: white;
+  text-align: center;
+  background: transparent;
+}
+
+.cast-card .name .known-for {
+  grid-area: name;
+  font-size: 1rem;
+  color: var(--alt-text-color);
+  text-align: center;
+  background: inherit;
+}
+
+.cast-card .bio {
+  grid-area: bio;
+  font-size: 1.25rem;
+  color: var(--light-accent);
+  background: transparent;
+}
+
+.cast-card .bio .text {
+  color: var(--alt-text-color);
+  font-size: 0.85rem;
+  padding: 2% 2% 0 0;
+  background: inherit;
+}
+
+.cast-card .personal {
+  grid-area: personal;
+  padding-top: 5%;
+  background: transparent;
+}
+
+.cast-card .personal ul {
+  list-style: none;
+}
+
+.cast-card .personal ul li {
+  padding: 0;
+  margin: 0;
+  width: 8em;
+  padding-right: 9%;
+  display: inline-block;
+}
+
+.cast-card .personal .general {
+  color: var(--light-accent);
+  background: inherit;
+}
+
+.cast-card .personal .personal-data {
+  color: var(--alt-text-color);
+  background: inherit;
+}
+
+.cast-card .social {
+  grid-area: social;
+  display: grid;
+  grid-template-rows: 40 60;
+  grid-template-columns: auto;
+  grid-template-areas:
+    'social-media'
+    'homepage';
+  background: transparent;
+}
+
+.cast-card .social .social-media {
+  font-size: 1.35rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: inherit;
+}
+
+.cast-card .social a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.cast-card .social a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.cast-card .social .homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+}
+
+/* VIDEO PLAYER: */
+
+.video-player {
+  position: fixed;
+  z-index: 100;
+  top: 15%;
+  left: 15%;
+  width: 70%;
+  height: 70%;
+  margin: 0;
+  overflow-y: none;
+  background-color: transparent;
+}
+
+.video-player iframe {
+  background-color: transparent;
+}
+
+/* REVIEWS STYLING: */
+
+.review-box {
+  position: relative;
+  z-index: inherit;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  border: 2px solid rgb(140, 140, 140);
+  background-color: black;
+}
+
+.review-box h1 {
+  color: white;
+  text-align: center;
+  background: transparent;
+}
+
+.review-box u {
+  background: transparent;
+}
+
+.review-box ul {
+  padding: 2%;
+  display: grid;
+  grid-template-rows: 20 auto;
+  grid-template-areas:
+    'author'
+    'content';
+  background: transparent;
+}
+
+.review-box li {
+  height: 8rem;
+  border: 1px solid rgb(95, 95, 95);
+  border-radius: 10px;
+  padding: 1.5%;
+  margin-bottom: 1.5%;
+  background: transparent;
+}
+
+.review-box .review {
+  background: inherit;
+}
+
+.review-box .author {
+  background: inherit;
+  padding-bottom: 5px;
+}
+
+.review-box .author a {
+  grid-area: author;
+  color: var(--text-color);
+  background: inherit;
+}
+
+.review-box .content {
+  grid-area: content;
+  /* height: 100%; */
+  color: var(--alt-text-color);
+  background: transparent;
+}
+
+/* FOOTER STYLING: */
+
+footer {
+  position: fixed;
+  bottom: 0;
+  height: 45px;
+  width: 100%;
+  text-align: center;
+  background-color: transparent;
+}
+
+footer span {
+  position: relative;
+  left: -45px;
+  /* bottom: -5px; */
+  font-size: 12px;
+  color: var(--alt-text-color);
+  background-color: inherit;
+}
+
+.tmdb-img {
+  position: relative;
+  float: left;
+  width: 95px;
+  bottom: -5px;
+  left: 5px;
+  background-color: inherit;
+}
+
+/* ABOUT SITE: */
+
+.site-about {
+  float: right;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 1s;
+}
+
+.about-box {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  z-index: 1000;
+  background-color: rgb(10, 10, 10);
+}
+
+.about-box h1 {
+  color: var(--text-color);
+  background: transparent;
+  padding: 1rem 0 3rem 0;
+}
+
+.about-box .credit {
+  width: 100%;
+  height: auto;
+  padding-bottom: 1.5rem;
+  background: transparent;
+}
+
+.about-box .credit .title {
+  font-size: 1.1rem;
+  color: white;
+  background: transparent;
+}
+
+.about-box .credit .who {
+  padding-top: 0.35%;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  background: transparent;
+}
+
+.about-box .credit a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.about-box .credit img {
+  padding-top: 0.25%;
+}
+
+.about-box .credit .icon {
+  padding-left: 1%;
+}
+
+/* ANIMATION KEYFRAMES: */
+
+@keyframes ticker {
+  0% {
+    margin-top: 0;
   }
-  to {
-    transform: rotate(360deg);
+  25% {
+    margin-top: -30px;
+  }
+  50% {
+    margin-top: -60px;
+  }
+  75% {
+    margin-top: -90px;
+  }
+  100% {
+    margin-top: 0;
   }
 }

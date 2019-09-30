@@ -1,68 +1,49 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# The Movie Site
 
-## Available Scripts
+[![License](https://img.shields.io/badge/license-Apache2-blue.svg?style=flat-square)](https://github.com/Michael-Lafreniere/the-movie-site/blob/master/LICENCE)
+[![GitHub stars](https://img.shields.io/github/stars/Michael-Lafreniere/the-movie-site?style=flat-square)](https://github.com/Michael-Lafreniere/the-movie-site/stargazers)
+[![GitHub forks](https://img.shields.io/github/forks/Michael-Lafreniere/the-movie-site.svg?style=flat-square)](https://github.com/Michael-Lafreniere/the-movie-site/network)
 
-In the project directory, you can run:
+The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [The Movie Database (TMDb) API](https://www.themoviedb.org/documentation/api) to get movie details, cast/crew information, reviews and the movie trailer (if one exists).
 
-### `npm start`
+![gif of the movie site](https://github.com/Michael-Lafreniere/the-movie-site/blob/master/docs/the-movie-site.gif)
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Installation/Usage
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+[node.js](http://nodejs.org/download/) is required to get `npm`. Use the package manager [npm](https://pip.pypa.io/en/stable/) to install/run the-movie-site.
 
-### `npm test`
+1. Clone the repo: `git@github.com:Michael-Lafreniere/the-movie-site.git`
+2. `cd the-movie-site`
+3. Install packages: `npm install`
+4. Create a `.env` file and put `REACT_APP_TMDB_V3_API_KEY = YOUR_KEY_HERE` in it.
+   > - **To get your key** [Sign Up Here](https://www.themoviedb.org/account/signup)
+5. Run it: `npm run start`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Tools
 
-### `npm run build`
+|                                       Tool                                        | Description                                                    |
+| :-------------------------------------------------------------------------------: | -------------------------------------------------------------- |
+|                [React](http://facebook.github.io/react/index.html)                | A JavaScript library used for making website user interfaces   |
+|  [react-spinner-material](https://www.npmjs.com/package/react-spinner-material)   | A simple react spinner following Material UI's using only css. |
+| [react-fontawesome](https://www.npmjs.com/package/@fortawesome/react-fontawesome) | Font Awesome 5 React component using SVG with JS               |
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+## To Do
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+- [ ] Move AutoComplete to it's own component (currently in `/Components/Header.js`)
+- [ ] Fix a couple css bugs/issues
+- [ ] Detect if no trailer/reviews exist and do not display the link
+- [ ] Add a drop down on the left side of the `Header.js` to select between popular (current), just released, etc
+- [ ] When you click on a movie quote it should bring up the detailed movie information
+- [ ] Detect when data hasn't finished loading from [TMDb](https://www.themoviedb.org) and delay rendering component
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Authors
 
-### `npm run eject`
+[**Michael Lafreniere**](https://github.com/Michael-Lafreniere)
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Contributing
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## License
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+[Apache2](https://choosealicense.com/licenses/apache-2.0/)
