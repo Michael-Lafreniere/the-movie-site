@@ -37,7 +37,7 @@ class App extends React.Component {
       <div className="App">
         <Header movieSearch={this.movieSearch} />
 
-        <QuoteTicker />
+        <QuoteTicker movieSearch={this.movieSearch} />
         <Cards
           movies={this.state.movieList}
           movieID={this.state.movieID}

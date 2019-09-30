@@ -240,10 +240,6 @@ header .search-input input[type='text']:focus {
 .quote-ticker .quote ul li {
   line-height: 30px;
   list-style: none;
-  background: transparent;
-}
-
-.quote-ticker .quote ul li a {
   color: var(--alt-text-color);
   text-decoration: none;
   text-overflow: ellipsis;
@@ -251,6 +247,10 @@ header .search-input input[type='text']:focus {
   -webkit-font-smoothing: antialiased;
   padding-left: 5.75rem;
   background: transparent;
+}
+
+.quote-ticker .quote ul li:hover {
+  cursor: pointer;
 }
 
 .quote-ticker .quote ul:hover {

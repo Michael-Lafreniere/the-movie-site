@@ -125,6 +125,7 @@ export class AutoComplete extends Component {
       if (found) {
         // this.setState({ searchString: '', data: [] });
         // this.inputRef.current.value = '';
+        // console.log('movie: ', found[0].value, ', id: ', found[0].id)
         this.props.movieSearch(found[0].id);
       }
     }
