@@ -108,7 +108,6 @@ body {
 
 .animate-link:hover::after {
   width: 100%;
-  /* transition: width .3s; */
 }
 
 .close-button {
@@ -311,9 +310,6 @@ cite {
   background-color: inherit;
 }
 
-/* .cards .card .card-header {
-} */
-
 .cards .card .card-header .imdb_logo {
   grid-area: imdb;
   position: relative;
@@ -321,8 +317,8 @@ cite {
   background-image: url(IMDb_logo.png);
   background-size: contain;
   background-repeat: no-repeat;
+  height: 60%;
   top: 5px;
-  /* z-index: 10; */
 }
 
 .cards .card .card-header .title-area {
@@ -390,14 +386,13 @@ cite {
 .cards .card .catagories {
   grid-area: catagories;
   font-size: 13px;
-  /* color: var(--light-accent); */
   background-color: inherit;
 }
 
 .cards .card .writeup {
   grid-area: writeup;
   margin-top: 5px;
-  height: 93%;
+  height: 100%;
   background-color: inherit;
   color: var(--light-accent);
 }

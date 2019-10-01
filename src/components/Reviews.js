@@ -1,12 +1,6 @@
 import React, { Component } from 'react';
 import { CloseButton } from './CloseButton';
 import { getTMDbReviews } from '../api';
-
-//   id: string
-//   author: string
-//   content: string
-//   url: string
-
 export class Reviews extends Component {
   constructor() {
     super();
@@ -37,8 +31,6 @@ export class Reviews extends Component {
     let reviews = null;
     if (this.state.reviews !== undefined) {
       reviews = this.state.reviews.map((review, index) => {
-        if (review.content.length > 550) {
-        }
         return (
           <li className="review" key={index}>
             <div className="author">
@@ -63,6 +55,7 @@ export class Reviews extends Component {
         <br /> Check back soon!
       </h3>
     );
+
     if (reviews !== null && reviews.length > 0) {
       noReviewsFound = null;
     }

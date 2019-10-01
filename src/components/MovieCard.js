@@ -113,7 +113,7 @@ export class MovieCard extends Component {
 
     let scroll = null;
     let summary = this.state.overview;
-    if (this.state.overview.length > 350) {
+    if (this.state.overview.length > 320) {
       if (this.state.scrollDown) {
         scroll = <div className="scroll-down-arrow"></div>;
       } else {
