@@ -638,8 +638,18 @@ cite {
 }
 
 .movie-details-inner-box .extra .trailer span {
-  cursor: pointer;
   height: 1.5rem;
+  background: inherit;
+}
+
+.movie-details-inner-box .extra .pointer {
+  cursor: pointer;
+}
+
+.movie-details-inner-box .extra .no-trailer {
+  cursor: auto;
+  height: 1.5rem;
+  color: white;
   background: inherit;
 }
 

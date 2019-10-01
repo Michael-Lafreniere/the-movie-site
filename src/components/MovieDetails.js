@@ -186,6 +186,26 @@ export class MovieDetails extends Component {
       percentColor = 'yellow-text';
     }
 
+    let videoTrailer = null;
+    if (
+      this.state.videos !== undefined &&
+      this.state.videos[0].site === 'YouTube'
+    ) {
+      videoTrailer = (
+        <span
+          onClick={this.toggleTrailer}
+          className="white-to-yellow-hover-text animate-link pointer"
+        >
+          <FontAwesomeIcon icon={faPlayCircle} className="play-button" /> Play
+          Trailer
+        </span>
+      );
+    } else {
+      videoTrailer = (
+        <span className="no-trailer">No Trailer Yet Available</span>
+      );
+    }
+
     let videoPlayer = null;
     if (
       this.state.playTrailer === true &&
@@ -299,16 +319,7 @@ export class MovieDetails extends Component {
                 <span className="text">{this.state.runtime} mins</span>
               </div>
               <div className="trailer">
-                <span
-                  onClick={this.toggleTrailer}
-                  className="white-to-yellow-hover-text animate-link"
-                >
-                  <FontAwesomeIcon
-                    icon={faPlayCircle}
-                    className="play-button"
-                  />{' '}
-                  Play Trailer
-                </span>
+                {videoTrailer}
                 {videoPlayer}
               </div>
               <div className="release-date">
