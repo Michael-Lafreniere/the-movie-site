@@ -31,6 +31,7 @@ The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [
 
 - [ ] Move AutoComplete to it's own component (currently in `/Components/Header.js`)
 - [x] ~~Fix a couple css bugs/issues~~
+  > - [x] ~~Refactored css into individual files~~
 - [x] ~~Detect if no trailer exist and do not display the link~~
 - [ ] Add a drop down on the left side of the `Header.js` to select between popular (current), just released, etc
 - [x] ~~When you click on a movie quote it should bring up the detailed movie information~~
