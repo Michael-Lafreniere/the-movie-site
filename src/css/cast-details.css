@@ -1,0 +1,131 @@
+/* DETAILED CAST CARD: */
+
+.cast-card {
+  display: grid;
+  grid-template-rows: 15% 65% auto;
+  grid-template-columns: 40% auto;
+  grid-template-areas:
+    'image name'
+    'image bio'
+    'social personal';
+  position: relative;
+  z-index: inherit;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  border: 2px solid rgb(140, 140, 140);
+  background-color: black;
+}
+
+.cast-card strong {
+  background: transparent;
+}
+
+.cast-card-close-button-position {
+  position: fixed;
+  top: 21.25%;
+  left: 73.75%;
+}
+
+.cast-card .image {
+  grid-area: image;
+  border-radius: 2%;
+  margin: 3%;
+}
+
+.cast-card .name {
+  grid-area: name;
+  font-size: 1.75rem;
+  padding-top: 2%;
+  color: white;
+  text-align: center;
+  background: transparent;
+}
+
+.cast-card .name .known-for {
+  grid-area: name;
+  font-size: 1rem;
+  color: var(--alt-text-color);
+  text-align: center;
+  background: inherit;
+}
+
+.cast-card .bio {
+  grid-area: bio;
+  font-size: 1.25rem;
+  color: var(--light-accent);
+  background: transparent;
+}
+
+.cast-card .bio .text {
+  color: var(--alt-text-color);
+  font-size: 0.85rem;
+  padding: 2% 2% 0 0;
+  background: inherit;
+}
+
+.cast-card .personal {
+  grid-area: personal;
+  padding-top: 5%;
+  background: transparent;
+}
+
+.cast-card .personal ul {
+  list-style: none;
+}
+
+.cast-card .personal ul li {
+  padding: 0;
+  margin: 0;
+  width: 8em;
+  padding-right: 9%;
+  display: inline-block;
+}
+
+.cast-card .personal .general {
+  color: var(--light-accent);
+  background: inherit;
+}
+
+.cast-card .personal .personal-data {
+  color: var(--alt-text-color);
+  background: inherit;
+}
+
+.cast-card .social {
+  grid-area: social;
+  display: grid;
+  grid-template-rows: 40 60;
+  grid-template-columns: auto;
+  grid-template-areas:
+    'social-media'
+    'homepage';
+  background: transparent;
+}
+
+.cast-card .social .social-media {
+  font-size: 1.35rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: inherit;
+}
+
+.cast-card .social a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.cast-card .social a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.cast-card .social .homepage {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: inherit;
+}

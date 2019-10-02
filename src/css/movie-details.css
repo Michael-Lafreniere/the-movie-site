@@ -1,0 +1,245 @@
+/* MOVIE DETAIL CARD STYLING: */
+
+.movie-detail-outer-box {
+  position: relative;
+  z-index: 100;
+  top: 10%;
+  left: 5%;
+  width: 90%;
+  height: 80%;
+  border-radius: 10px;
+  margin: 0;
+  overflow-y: none;
+}
+
+.movie-details-inner-box {
+  position: relative;
+  display: grid;
+  grid-template-rows: 15% auto 12% 30% 25%;
+  grid-template-columns: 35% 32.5% 32.5%;
+  grid-template-areas:
+    'poster title-tagline title-tagline'
+    'poster writeup writeup'
+    'poster catagories-companies catagories-companies'
+    'poster cast cast'
+    'poster extra extra';
+  position: fixed;
+  z-index: 50;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  background-color: transparent;
+  border-radius: 10px;
+  z-index: 50;
+}
+
+.movie-detail-close-button-position {
+  position: fixed;
+  top: 18.5%;
+  left: 79%;
+}
+
+.movie-details-inner-box .poster {
+  grid-area: poster;
+}
+
+.movie-details-inner-box .title-tagline {
+  grid-area: title-tagline;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .title-tagline h1 {
+  color: white;
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+.movie-details-inner-box .title-tagline span {
+  font-size: 0.8rem;
+  color: var(--text-color);
+  background-color: transparent;
+  display: flex;
+  justify-content: center;
+}
+
+/* Movie Writeup: */
+
+.movie-details-inner-box .writeup {
+  grid-area: writeup;
+  line-height: 1.15;
+  padding: 0 5%;
+  overflow-wrap: break-word;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .writeup span {
+  color: white;
+  background-color: transparent;
+}
+
+/* Catagories & Companies: */
+
+.movie-details-inner-box .catagories-companies {
+  grid-area: catagories-companies;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding-left: 5%;
+  padding-top: 1.5%;
+}
+
+.movie-details-inner-box .catagories-companies .catagories {
+  color: var(--text-color);
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .catagories-companies .company {
+  color: white;
+  font-size: 0.9rem;
+  background-color: transparent;
+}
+
+/* Cast: */
+
+.movie-details-inner-box .cast {
+  grid-area: cast;
+  position: relative;
+  font-size: 0.85rem;
+  padding-left: 2%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.cast-info {
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast img {
+  display: block;
+  border-radius: 20%;
+  width: 75%;
+  margin: auto;
+}
+
+.movie-details-inner-box .cast .character-name {
+  font-size: 0.65rem;
+  word-break: keep-all;
+}
+
+.movie-details-inner-box .cast ul {
+  display: flex;
+  height: 82%;
+  flex-wrap: wrap;
+  list-style-type: none;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast li {
+  width: 100px;
+  height: 100%;
+  text-decoration: none;
+  word-break: keep-all;
+  padding-left: 2%;
+  padding-bottom: 2%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .cast span {
+  background-color: transparent;
+}
+
+/******************************/
+
+/* Extra (profit, release date, run time, etc): */
+
+.movie-details-inner-box .extra {
+  display: grid;
+  grid-area: extra;
+  grid-template-rows: 50% 50%;
+  grid-template-columns: 25% auto 25%;
+  grid-template-areas:
+    'runtime trailer release-date'
+    'profit reviews user-rating';
+  font-size: 1.15rem;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.movie-details-inner-box .extra span {
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .runtime {
+  grid-area: runtime;
+  padding-left: 17%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .trailer {
+  grid-area: trailer;
+  display: flex;
+  justify-content: center;
+  padding-top: 3%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .trailer span {
+  height: 1.5rem;
+  background: inherit;
+}
+
+.movie-details-inner-box .extra .pointer {
+  cursor: pointer;
+}
+
+.movie-details-inner-box .extra .no-trailer {
+  cursor: auto;
+  height: 1.5rem;
+  color: white;
+  background: inherit;
+}
+
+.play-button {
+  color: var(--alt-text-color);
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .release-date {
+  grid-area: release-date;
+  position: relative;
+  float: right;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .profit {
+  grid-area: profit;
+  padding-left: 17%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .reviews {
+  grid-area: reviews;
+  display: flex;
+  height: 1.5rem;
+  justify-content: center;
+  padding-top: 3%;
+  background-color: transparent;
+}
+
+.movie-details-inner-box .extra .reviews span {
+  cursor: pointer;
+  background: inherit;
+}
+
+.movie-details-inner-box .extra .user-rating {
+  grid-area: user-rating;
+  overflow: hidden;
+  background-color: transparent;
+}
+
+.float-right {
+  float: right;
+  padding-right: 25%;
+  background: transparent;
+}

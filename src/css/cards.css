@@ -1,0 +1,165 @@
+/* MAIN SITE STYLING: */
+
+.cards {
+  display: grid;
+  height: 80vh;
+  padding: 10px 10px;
+  grid-template-columns: repeat(4, minmax(100px, 1fr));
+  grid-template-rows: repeat(2000, minmax(275px, 1fr));
+  grid-gap: 10px 10px;
+  z-index: 1000;
+}
+
+.cards .card {
+  display: grid;
+  grid-template-columns: 40% auto;
+  grid-template-rows: 15% 12% auto 10%;
+  grid-template-areas:
+    'header header'
+    'poster catagories'
+    'poster writeup'
+    'poster release-date';
+  border-radius: 5px;
+  border: 1px solid var(--alt-text-color);
+  color: var(--light-accent);
+  background-color: var(--dark-accent);
+  padding: 0 5px;
+  height: 100%;
+  transition: all 0.2s linear;
+}
+
+.cards .card:hover {
+  cursor: pointer;
+  border: 1px solid var(--text-color);
+  background-color: var(--darker-accent);
+}
+
+.card .card-header {
+  grid-area: header;
+  display: grid;
+  grid-template-columns: 10% auto 15%;
+  grid-template-areas: 'imdb title votes';
+  background-color: inherit;
+}
+
+.cards .card .card-header .imdb_logo {
+  grid-area: imdb;
+  position: relative;
+  background-color: transparent;
+  background-image: url('../IMDb_logo.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 60%;
+  top: 5px;
+}
+
+.cards .card .card-header .title-area {
+  grid-area: title;
+  background-color: transparent;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 1%;
+}
+
+.cards .card .card-header .title {
+  color: var(--text-color);
+  background-color: inherit;
+}
+
+.cards .card .card-header .genre-list {
+  font-size: 10px;
+  color: var(--light-accent);
+  background-color: inherit;
+  text-align: center;
+  align-items: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.card .card-header .votes {
+  grid-area: votes;
+  font-size: 0.85rem;
+  padding-top: 3px;
+  color: #fff;
+  background-color: inherit;
+}
+
+.cards .card .user-score {
+  float: right;
+  font-size: 0.65rem;
+  color: var(--light-accent);
+  background-color: inherit;
+}
+
+.cards .card .vote {
+  float: right;
+  margin-top: -3px;
+  background-color: inherit;
+}
+
+.cards .card .percent {
+  float: right;
+  font-size: 0.65rem;
+  margin-top: -3px;
+  padding-left: 1%;
+  background-color: inherit;
+}
+
+.cards .card img {
+  grid-area: poster;
+  width: 90%;
+  height: 90%;
+  border-radius: 5px;
+  background-color: inherit;
+}
+
+.cards .card .catagories {
+  grid-area: catagories;
+  font-size: 13px;
+  background-color: inherit;
+}
+
+.cards .card .writeup {
+  grid-area: writeup;
+  margin-top: 5px;
+  height: 100%;
+  background-color: inherit;
+  color: var(--light-accent);
+}
+
+.cards .card .writeup .tagline {
+  font-size: 13px;
+  color: var(--text-color);
+  background-color: inherit;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.cards .card .writeup p {
+  color: var(--light-accent);
+  background-color: inherit;
+  line-height: 1.15;
+  font-size: 14px;
+  overflow-wrap: break-word;
+  height: 9rem;
+  margin-block-start: 0.5em;
+  margin-block-end: 1em;
+}
+
+.cards .card .writeup p::-webkit-scrollbar {
+  display: inline-block;
+}
+
+.cards .card .release-date {
+  display: flex;
+  font-size: 13px;
+  justify-content: flex-end;
+  background-color: inherit;
+}
+
+.cards .card .release-date span {
+  display: block;
+  background-color: inherit;
+}

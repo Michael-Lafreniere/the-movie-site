@@ -1,0 +1,59 @@
+/* ABOUT SITE: */
+
+.site-about {
+  float: right;
+  font-size: 14px;
+  cursor: pointer;
+  transition: color 1s;
+}
+
+.about-box {
+  position: fixed;
+  top: 20%;
+  left: 20%;
+  width: 60%;
+  height: 60%;
+  border: 1px solid var(--text-color);
+  border-radius: 10px;
+  z-index: 1000;
+  background-color: rgb(10, 10, 10);
+}
+
+.about-box h1 {
+  color: var(--text-color);
+  background: transparent;
+  padding: 1rem 0 3rem 0;
+}
+
+.about-box .credit {
+  width: 100%;
+  height: auto;
+  padding-bottom: 1.5rem;
+  background: transparent;
+}
+
+.about-box .credit .title {
+  font-size: 1.1rem;
+  color: white;
+  background: transparent;
+}
+
+.about-box .credit .who {
+  padding-top: 0.35%;
+  font-size: 1.1rem;
+  color: var(--text-color);
+  background: transparent;
+}
+
+.about-box .credit a {
+  text-decoration: none;
+  background: transparent;
+}
+
+.about-box .credit img {
+  padding-top: 0.25%;
+}
+
+.about-box .credit .icon {
+  padding-left: 1%;
+}

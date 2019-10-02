@@ -1,0 +1,63 @@
+/* REVIEWS STYLING: */
+
+.review-box {
+  position: relative;
+  z-index: inherit;
+  top: 5%;
+  left: 10%;
+  width: 80%;
+  height: 90%;
+  border-radius: 10px;
+  border: 2px solid rgb(140, 140, 140);
+  background-color: black;
+}
+
+.review-box h1 {
+  color: white;
+  text-align: center;
+  background: transparent;
+}
+
+.review-box u {
+  background: transparent;
+}
+
+.review-box ul {
+  padding: 2%;
+  display: grid;
+  grid-template-rows: 20 auto;
+  grid-template-areas:
+    'author'
+    'content';
+  background: transparent;
+}
+
+.review-box li {
+  height: 8rem;
+  border: 1px solid rgb(95, 95, 95);
+  border-radius: 10px;
+  padding: 1.5%;
+  margin-bottom: 1.5%;
+  background: transparent;
+}
+
+.review-box .review {
+  background: inherit;
+}
+
+.review-box .author {
+  background: inherit;
+  padding-bottom: 5px;
+}
+
+.review-box .author a {
+  grid-area: author;
+  color: var(--text-color);
+  background: inherit;
+}
+
+.review-box .content {
+  grid-area: content;
+  color: var(--alt-text-color);
+  background: transparent;
+}
