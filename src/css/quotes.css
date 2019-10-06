@@ -66,3 +66,26 @@ cite::before {
 cite {
   color: var(--light-accent);
 }
+
+/* ANIMATION KEYFRAMES: */
+
+@keyframes ticker {
+  0% {
+    margin-top: 0%;
+  }
+  20% {
+    margin-top: -30px;
+  }
+  40% {
+    margin-top: -60px;
+  }
+  60% {
+    margin-top: -90px;
+  }
+  80% {
+    margin-top: -120px;
+  }
+  100% {
+    margin-top: 0%;
+  }
+}
