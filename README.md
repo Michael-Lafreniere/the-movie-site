@@ -35,8 +35,8 @@ The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [
 - [x] ~~Detect if no trailer exist and do not display the link~~
 - [ ] Add a drop down on the left side of the `Header.js` to select between popular (current), just released, etc
 - [x] ~~When you click on a movie quote it should bring up the detailed movie information~~
-- [ ] Detect when data hasn't finished loading from [TMDb](https://www.themoviedb.org) and delay rendering component
-- [ ] Detect when text is pasted into `Header.js` and conduct a search
+- [ ] Detect when data hasn't finished loading from [TMDb](https://www.themoviedb.org) and delay rendering component(s)
+- [x] Detect when text is pasted into `Header.js` and conduct a search for possible matches
 
 ## Author
 

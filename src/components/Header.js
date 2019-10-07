@@ -72,7 +72,8 @@ export class AutoComplete extends Component {
     this.search(selected);
   }
 
-  update(searchValue) {
+  update(e) {
+    const searchValue = e.target.value;
     if (searchValue.length > 3) {
       this.setState({ searchString: searchValue });
       const search = searchValue.toLowerCase();
@@ -116,7 +117,8 @@ export class AutoComplete extends Component {
     return null;
   }
 
-  search(searchTerm) {
+  search(e) {
+    const searchTerm = e.target.value;
     if (this.state.data !== undefined) {
       const search = searchTerm.toLowerCase();
       const found = this.state.data.filter(data => {
@@ -156,10 +158,9 @@ export class AutoComplete extends Component {
           list="movie-suggestions"
           onFocus={this.onFocus}
           onBlur={this.onBlur}
+          onChange={this.update}
           onKeyPress={e => {
-            e.key === 'Enter'
-              ? this.search(e.target.value)
-              : this.update(e.target.value);
+            e.key === 'Enter' ? this.search(e) : this.update(e);
           }}
         ></input>
         {suggestions}
