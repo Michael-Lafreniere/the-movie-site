@@ -29,7 +29,7 @@ The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [
 
 ## To Do
 
-- [ ] Move AutoComplete to it's own component (currently in `/Components/Header.js`)
+- [x] ~~Move AutoComplete to it's own component (currently in `/Components/Header.js`)~~
 - [x] ~~Fix a couple css bugs/issues~~
   > - [x] ~~Refactored css into individual files~~
 - [x] ~~Detect if no trailer exist and do not display the link~~

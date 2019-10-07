@@ -1,63 +1,171 @@
 import React, { Component } from 'react';
 
+class Suggestion extends Component {
+  constructor() {
+    super();
+    this.state = {};
+  }
+
+  render() {
+    const data = this.props;
+    const classname = 'autocomplete-list-item';
+    if (data.highlight) {
+    }
+
+    if (this.props.id !== undefined) {
+      // this.setState({ id: this.props.info.id });
+    }
+
+    return (
+      <li
+        key={data.index}
+        className={classname}
+        onClick={() => data.toggle(data.info.value)}
+      >
+        {data.info.value}
+      </li>
+    );
+  }
+}
+
 export class AutoComplete extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
+    this.update = this.update.bind(this);
+    this.search = this.search.bind(this);
+    this.onFocus = this.onFocus.bind(this);
+    this.onBlur = this.onBlur.bind(this);
+    this.onClick = this.onClick.bind(this);
+    this.divRef = React.createRef();
+    this.inputRef = React.createRef();
     this.state = {
-      maxDisplayed: 5,
-      searchTerm: '',
-      data: []
+      maxResultsDisplayed: 5,
+      searchString: '',
+      selected: -1,
+      data: [],
+      showSuggestions: false,
+      suggestionXOffset: 0
     };
   }
 
-  componentDidUpdate() {
-    this.setState({ searchTerm: this.props.searchTerm });
-    console.log(this.state.searchTerm);
-    if (this.props.remote !== undefined) {
-      if (this.props.remote.url === undefined) {
-        throw new Error('No URL provided but remote was specified.');
-      }
-      this.setState({ remote: this.props.remote });
-      console.log(this.props.remote);
-      this.fetchData(this.props.remote.url);
-    }
-    if (this.props.filter !== undefined) {
-      this.setState({ filter: this.props.filter });
+  onFocus() {
+    setTimeout(() => {
+      this.setState({ showSuggestions: !this.state.showSuggestions });
+    }, 500);
+    const { current } = this.divRef;
+    this.setState({
+      suggestionXOffset: current.getBoundingClientRect().x,
+      suggestionYOffset: current.getBoundingClientRect().height,
+      suggestionAreaWidth: current.getBoundingClientRect().width
+    });
+  }
+
+  onBlur() {
+    setTimeout(() => {
+      this.setState({ showSuggestions: !this.state.showSuggestions });
+    }, 200);
+  }
+
+  onClick(selected) {
+    this.setState({ searchString: selected });
+    this.inputRef.current.value = selected;
+    this.search(selected);
+  }
+
+  update(e) {
+    const searchValue = e.target.value;
+    if (searchValue.length > 3) {
+      this.setState({ searchString: searchValue });
+      const search = searchValue.toLowerCase();
+      const url = `https://api.themoviedb.org/3/search/movie?query=${search}&api_key=${process.env.REACT_APP_TMDB_V3_API_KEY}`;
+      fetch(url)
+        .then(response => {
+          return response.json();
+        })
+        .then(data => {
+          if (data.results !== undefined) {
+            let items = data.results.map(res => {
+              return { id: res.id, value: res.original_title };
+            });
+            this.setState({ data: items });
+          }
+        });
     }
   }
 
-  async fetchData(url) {
-    if (this.state.searchTerm !== null && this.state.searchTerm.length > 3) {
-      const updatedURL = url.replace('%QUERY', this.state.searchTerm);
-      const res = await fetch(updatedURL);
-      if (!res.ok) {
-        console.log('Issue came up while fetching Suggestion data.');
+  generateRecommendedList() {
+    if (
+      this.state.searchString !== undefined ||
+      (this.state.searchString !== '' &&
+        this.state.data !== undefined &&
+        this.state.data.length > 0)
+    ) {
+      const search = this.state.searchString.toLowerCase();
+      const matches = this.state.data.filter(s =>
+        s.value.toLowerCase().includes(search)
+      );
+      if (matches) {
+        return matches.map((data, index) => {
+          if (index < this.state.maxResultsDisplayed) {
+            return <Suggestion key={index} info={data} toggle={this.onClick} />;
+          } else {
+            return null;
+          }
+        });
       }
-      let data = await res.json();
-      if (this.state.filter !== undefined) {
-        data = this.state.filter(data);
+    }
+    return null;
+  }
+
+  search(e) {
+    const searchTerm = e.target.value;
+    if (this.state.data !== undefined) {
+      const search = searchTerm.toLowerCase();
+      const found = this.state.data.filter(data => {
+        return data.value.toLowerCase() === search;
+      });
+      if (found) {
+        // this.setState({ searchString: '', data: [] });
+        // this.inputRef.current.value = '';
+        // console.log('movie: ', found[0].value, ', id: ', found[0].id)
+        this.props.movieSearch(found[0].id);
       }
-      // console.log(data);
-      this.setState({ data: data });
     }
   }
 
   render() {
-    // this.update();
+    const ulStyle = {
+      position: 'absolute',
+      top: `${this.state.suggestionYOffset - 7}px`,
+      left: `${this.state.suggestionXOffset + 35}px`,
+      zIndex: '3000',
+      width: `${this.state.suggestionAreaWidth - 65}px`,
+      backgroundColor: 'transparent'
+    };
 
     let suggestions = null;
-    if (this.props.data !== undefined) {
-      console.log('No data?');
-      suggestions = this.props.data.map((data, index) => {
-        if (index < this.state.maxDisplayed) {
-          return <li key={data.id}>{data.value}</li>;
-        } else {
-          return null;
-        }
-      });
+    if (this.state.showSuggestions === true && this.state.data.length > 0) {
+      suggestions = <ul style={ulStyle}>{this.generateRecommendedList()};</ul>;
     }
 
-    return <ul className="autocomplete-list">{suggestions}</ul>;
+    return (
+      <div className="search-input" ref={this.divRef}>
+        <input
+          type="text"
+          ref={this.inputRef}
+          placeholder="Search..."
+          autoComplete="on"
+          list="movie-suggestions"
+          onFocus={this.onFocus}
+          onBlur={this.onBlur}
+          onChange={this.update}
+          onKeyPress={e => {
+            e.key === 'Enter' ? this.search(e) : this.update(e);
+          }}
+        ></input>
+        {suggestions}
+      </div>
+    );
   }
 }
 
