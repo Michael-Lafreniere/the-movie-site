@@ -7,17 +7,36 @@ footer {
   width: 100%;
   text-align: center;
   background-color: transparent;
+
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  grid-template-areas: 'tmdb by about';
 }
 
 footer span {
-  position: relative;
-  left: -45px;
   font-size: 12px;
   color: var(--alt-text-color);
   background-color: inherit;
 }
 
+.by {
+  grid-area: by;
+  position: relative;
+  margin-top: 10px;
+  /* left: -85px; */
+  display: flex;
+  justify-content: center;
+}
+
+.site-about {
+  grid-area: about;
+  position: relative;
+  width: 3em;
+  margin-top: 10px;
+}
+
 .tmdb-img {
+  grid-area: tmdb;
   position: relative;
   float: left;
   width: 95px;
