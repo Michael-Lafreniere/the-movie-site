@@ -1,16 +1,15 @@
 /* FOOTER STYLING: */
 
 footer {
+  display: grid;
+  grid-template-columns: 10% auto 10%;
+  grid-template-areas: 'tmdb by about';
   position: fixed;
   bottom: 0;
   height: 45px;
   width: 100%;
   text-align: center;
   background-color: transparent;
-
-  display: grid;
-  grid-template-columns: 10% auto 10%;
-  grid-template-areas: 'tmdb by about';
 }
 
 footer span {
@@ -23,7 +22,6 @@ footer span {
   grid-area: by;
   position: relative;
   margin-top: 10px;
-  /* left: -85px; */
   display: flex;
   justify-content: center;
 }

@@ -29,9 +29,9 @@ export class Footer extends Component {
             alt="The Movie Database Logo"
           ></img>
         </a>
-        <span className="by footer-span">&copy;2019 by Michael Lafreniere</span>
+        <span className="by">&copy;2019 by Michael Lafreniere</span>
         <span
-          className="site-about white-to-yellow-hover-text animate-link footer-span"
+          className="site-about white-to-yellow-hover-text animate-link"
           onClick={this.toggleAbout}
         >
           About

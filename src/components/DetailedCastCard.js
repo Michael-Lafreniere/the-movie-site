@@ -29,7 +29,7 @@ const SocialMedia = ({ facebookID, twitterID, instagramID }) => {
   let twitter = null;
   let instagram = null;
 
-  if (facebookID !== null) {
+  if (facebookID !== null && twitterID.length > 0) {
     facebook = (
       <a href={`https://www.facebook.com/${facebookID}`}>
         <FontAwesomeIcon
@@ -40,7 +40,7 @@ const SocialMedia = ({ facebookID, twitterID, instagramID }) => {
     );
   }
 
-  if (twitterID !== null) {
+  if (twitterID !== null && twitterID.length > 0) {
     twitter = (
       <a href={`https://www.twitter.com/${twitterID}`}>
         <FontAwesomeIcon
@@ -51,7 +51,7 @@ const SocialMedia = ({ facebookID, twitterID, instagramID }) => {
     );
   }
 
-  if (instagramID !== null) {
+  if (instagramID !== null && twitterID.length > 0) {
     instagram = (
       <a href={`https://www.instagram.com/${instagramID}`}>
         <FontAwesomeIcon
