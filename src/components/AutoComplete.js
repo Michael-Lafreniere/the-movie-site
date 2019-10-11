@@ -117,8 +117,8 @@ export class AutoComplete extends Component {
     return null;
   }
 
-  search(e) {
-    const searchTerm = e.target.value;
+  search(term) {
+    const searchTerm = term;
     if (this.state.data !== undefined) {
       const search = searchTerm.toLowerCase();
       const found = this.state.data.filter(data => {

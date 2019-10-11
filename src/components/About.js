@@ -22,7 +22,7 @@ export const About = ({ toggleAbout }) => (
         <div className="title">Site Design and Programming:</div>
         <div className="who">
           Michael Lafreniere
-          <a href="http://www.github.com/">
+          <a href="https://github.com/Michael-Lafreniere">
             <FontAwesomeIcon
               icon={faGithub}
               className="white-to-yellow-hover-text icon"
