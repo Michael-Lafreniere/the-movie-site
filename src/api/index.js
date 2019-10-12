@@ -61,6 +61,22 @@ export function getTMDbPopularMovies(page = 1) {
   return generateTMDbUrl('movie/popular', { page });
 }
 
+export function getTMDbLatestMovies() {
+  return generateTMDbUrl('movie/latest');
+}
+
+export function getTMDbNowPlaying(page = 1) {
+  return generateTMDbUrl('movie/now_playing', { page });
+}
+
+export function getTMDbTopRatedMovies(page = 1) {
+  return generateTMDbUrl('movie/top_rated', { page });
+}
+
+export function getTMDbUpcomingMovies(page = 1) {
+  return generateTMDbUrl('movie/upcoming', { page });
+}
+
 export function getTMDbCastCrewImageURL(picture_path) {
   return handleTMDbApiCall(`${TMDB_CAST_CREW_URL}${picture_path}`);
 }

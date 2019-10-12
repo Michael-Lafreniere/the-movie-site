@@ -58,6 +58,6 @@
 
 .review-box .content {
   grid-area: content;
-  color: var(--alt-text-color);
+  color: var(--light-accent);
   background: transparent;
 }

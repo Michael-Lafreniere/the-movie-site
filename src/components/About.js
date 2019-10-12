@@ -7,7 +7,7 @@ export const About = ({ toggleAbout }) => (
   <div className="popup">
     <div className="about-box">
       <button
-        className="close-button movie-detail-close-button-position"
+        className="close-button about-box-close-button-position"
         onClick={() => toggleAbout()}
       >
         <FontAwesomeIcon

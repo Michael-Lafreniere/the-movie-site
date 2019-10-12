@@ -57,3 +57,9 @@
 .about-box .credit .icon {
   padding-left: 1%;
 }
+
+.about-box-close-button-position {
+  position: fixed;
+  top: 18%;
+  left: 79.5%;
+}

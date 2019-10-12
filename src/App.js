@@ -4,7 +4,14 @@ import Header from './components/Header';
 import QuoteTicker from './components/QuoteTicker';
 import Cards from './components/Cards';
 import Footer from './components/Footer';
-import { getTMDbPopularMovies, throwCommonError } from './api';
+import {
+  getTMDbPopularMovies,
+  getTMDbLatestMovies,
+  getTMDbUpcomingMovies,
+  getTMDbNowPlaying,
+  getTMDbTopRatedMovies,
+  throwCommonError
+} from './api';
 
 class App extends React.Component {
   constructor(props) {
@@ -43,8 +50,17 @@ class App extends React.Component {
     };
   }
 
-  componentDidMount() {
-    fetch(getTMDbPopularMovies())
+  getSelection() {
+    const { listID } = this.state;
+    let func = getTMDbPopularMovies;
+    if (listID === 1) {
+      func = getTMDbUpcomingMovies;
+    } else if (listID === 2) {
+      func = getTMDbTopRatedMovies;
+    } else if (listID === 3) {
+      func = getTMDbNowPlaying;
+    }
+    fetch(func())
       .then(res => res.json())
       .then(movies => {
         this.setState({
@@ -54,6 +70,14 @@ class App extends React.Component {
       .catch(err => {
         throwCommonError(err);
       });
+  }
+
+  componentDidUpdate() {
+    this.getSelection();
+  }
+
+  componentDidMount() {
+    this.getSelection();
   }
 
   movieSearch(movieID = 0) {
