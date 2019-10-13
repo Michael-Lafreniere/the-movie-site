@@ -9,6 +9,7 @@ import {
   faAddressCard
 } from '@fortawesome/fontawesome-free-solid';
 import {
+  fetchData,
   getTMDbMovie,
   getTMDbCastCrewInfo,
   getTMDbVideos,
@@ -60,8 +61,7 @@ export class MovieDetails extends Component {
   }
 
   componentDidMount() {
-    // this.setState({ loaded: false, castProfile: 0 });
-    getTMDbMovie(this.props.movieID).then(movie => {
+    fetchData(getTMDbMovie(this.props.movieID), movie => {
       if (movie) {
         this.setState({
           id: movie.id,
@@ -88,27 +88,28 @@ export class MovieDetails extends Component {
         });
       }
 
-      getTMDbCastCrewInfo(this.props.movieID).then(castCrew => {
-        if (castCrew) {
-          this.setState({
-            cast: castCrew.cast
-          });
-        }
+      fetchData(getTMDbCastCrewInfo(this.props.movieID), castCrew => {
+        this.setState({
+          cast: castCrew.cast
+        });
       });
 
-      getTMDbVideos(this.props.movieID).then(videos => {
-        if (videos) {
-          this.setState({
-            videos: videos.results
-          });
-        }
+      fetchData(getTMDbVideos(this.props.movieID), videos => {
+        this.setState({
+          videos: videos.results
+        });
       });
 
+      // Wait a short period before checking everything has loaded successfully before attempting to render:
       setTimeout(() => {
-        if (this.state.id !== undefined) {
+        if (
+          this.state.id !== undefined &&
+          this.state.cast !== undefined &&
+          this.state.videos !== undefined
+        ) {
           this.setState({ loaded: true });
         }
-      }, 155);
+      }, 150);
     });
   }
 
@@ -201,9 +202,7 @@ export class MovieDetails extends Component {
         </span>
       );
     } else {
-      videoTrailer = (
-        <span className="no-trailer">No Trailer Yet Available</span>
-      );
+      videoTrailer = <span className="no-trailer">No Trailer Available</span>;
     }
 
     let videoPlayer = null;

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { getTMDbMovie } from '../api';
+import { getTMDbMovie, fetchData } from '../api';
 import MovieCard from './MovieCard';
 import MovieDetails from './MovieDetails';
 
@@ -35,7 +35,9 @@ export class Cards extends Component {
     const movies = this.props.movies;
     const movieList = [];
 
-    movies.map(movie => movieList.push(getTMDbMovie(movie.id)));
+    movies.map(movie =>
+      movieList.push(fetchData(getTMDbMovie(movie.id), movie => movie))
+    );
 
     let popup;
     if (this.state.movieDetailsID > 0) {

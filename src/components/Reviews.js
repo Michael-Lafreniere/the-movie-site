@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { CloseButton } from './CloseButton';
-import { getTMDbReviews } from '../api';
+import { getTMDbReviews, fetchData } from '../api';
 export class Reviews extends Component {
   constructor() {
     super();
@@ -11,7 +11,7 @@ export class Reviews extends Component {
 
   componentDidMount() {
     if (this.props.movieID !== undefined) {
-      getTMDbReviews(this.props.movieID).then(reviews => {
+      fetchData(getTMDbReviews(this.props.movieID), reviews => {
         if (reviews) {
           this.setState({
             reviews: reviews.results

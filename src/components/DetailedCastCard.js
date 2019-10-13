@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { CloseButton } from './CloseButton';
 import Spinner from 'react-spinner-material';
-import { getTMDbPersonInfo, getTMDbSocialMediaInfo } from '../api';
+import { getTMDbPersonInfo, getTMDbSocialMediaInfo, fetchData } from '../api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faFacebook,
@@ -29,37 +29,43 @@ const SocialMedia = ({ facebookID, twitterID, instagramID }) => {
   let twitter = null;
   let instagram = null;
 
-  if (facebookID !== null && twitterID.length > 0) {
-    facebook = (
-      <a href={`https://www.facebook.com/${facebookID}`}>
-        <FontAwesomeIcon
-          icon={faFacebook}
-          className="white-to-yellow-hover-text icon transparent-background"
-        />
-      </a>
-    );
+  if (facebookID !== null && facebookID !== undefined) {
+    if (facebookID.length > 0) {
+      facebook = (
+        <a href={`https://www.facebook.com/${facebookID}`}>
+          <FontAwesomeIcon
+            icon={faFacebook}
+            className="white-to-yellow-hover-text icon transparent-background"
+          />
+        </a>
+      );
+    }
   }
 
-  if (twitterID !== null && twitterID.length > 0) {
-    twitter = (
-      <a href={`https://www.twitter.com/${twitterID}`}>
-        <FontAwesomeIcon
-          icon={faTwitter}
-          className="white-to-yellow-hover-text icon transparent-background"
-        />
-      </a>
-    );
+  if (twitterID !== null && twitterID !== undefined) {
+    if (twitterID.length > 0) {
+      twitter = (
+        <a href={`https://www.twitter.com/${twitterID}`}>
+          <FontAwesomeIcon
+            icon={faTwitter}
+            className="white-to-yellow-hover-text icon transparent-background"
+          />
+        </a>
+      );
+    }
   }
 
-  if (instagramID !== null && twitterID.length > 0) {
-    instagram = (
-      <a href={`https://www.instagram.com/${instagramID}`}>
-        <FontAwesomeIcon
-          icon={faInstagram}
-          className="white-to-yellow-hover-text icon transparent-background"
-        />
-      </a>
-    );
+  if (instagramID !== null && instagramID !== undefined) {
+    if (instagramID.length > 0) {
+      instagram = (
+        <a href={`https://www.instagram.com/${instagramID}`}>
+          <FontAwesomeIcon
+            icon={faInstagram}
+            className="white-to-yellow-hover-text icon transparent-background"
+          />
+        </a>
+      );
+    }
   }
 
   return (
@@ -80,7 +86,7 @@ export class DetailedCastCard extends Component {
   }
 
   componentDidMount() {
-    getTMDbPersonInfo(this.props.personID).then(person => {
+    fetchData(getTMDbPersonInfo(this.props.personID), person => {
       this.setState({
         id: person.id,
         name: person.name,
@@ -93,13 +99,13 @@ export class DetailedCastCard extends Component {
         homepage: person.homepage,
         imdb_id: person.imdb_id
       });
-    });
 
-    getTMDbSocialMediaInfo(this.props.personID).then(social => {
-      this.setState({
-        facebook: social.facebook_id,
-        twitter: social.twitter_id,
-        instagram: social.instagram_id
+      fetchData(getTMDbSocialMediaInfo(this.props.personID), social => {
+        this.setState({
+          facebook: social.facebook_id,
+          twitter: social.twitter_id,
+          instagram: social.instagram_id
+        });
       });
     });
 

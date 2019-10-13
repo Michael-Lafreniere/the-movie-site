@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from 'react-spinner-material';
-import { getTMDbMovie } from '../api';
+import { getTMDbMovie, fetchData } from '../api';
 
 export class MovieCard extends Component {
   constructor() {
@@ -14,8 +14,7 @@ export class MovieCard extends Component {
 
   componentDidMount() {
     this.setState({ loaded: false });
-    getTMDbMovie(this.props.movieData.id).then(movie => {
-      // console.log(movie);
+    fetchData(getTMDbMovie(this.props.movieData.id), movie => {
       if (movie) {
         this.setState({
           id: movie.id,

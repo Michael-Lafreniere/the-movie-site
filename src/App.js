@@ -6,11 +6,10 @@ import Cards from './components/Cards';
 import Footer from './components/Footer';
 import {
   getTMDbPopularMovies,
-  getTMDbLatestMovies,
   getTMDbUpcomingMovies,
   getTMDbNowPlaying,
   getTMDbTopRatedMovies,
-  throwCommonError
+  fetchData
 } from './api';
 
 class App extends React.Component {
@@ -52,24 +51,20 @@ class App extends React.Component {
 
   getSelection() {
     const { listID } = this.state;
-    let func = getTMDbPopularMovies;
+    let func = getTMDbPopularMovies();
     if (listID === 1) {
-      func = getTMDbUpcomingMovies;
+      func = getTMDbUpcomingMovies();
     } else if (listID === 2) {
-      func = getTMDbTopRatedMovies;
+      func = getTMDbTopRatedMovies();
     } else if (listID === 3) {
-      func = getTMDbNowPlaying;
+      func = getTMDbNowPlaying();
     }
-    fetch(func())
-      .then(res => res.json())
-      .then(movies => {
-        this.setState({
-          movieList: movies['results']
-        });
-      })
-      .catch(err => {
-        throwCommonError(err);
+
+    fetchData(func, movies => {
+      this.setState({
+        movieList: movies['results']
       });
+    });
   }
 
   componentDidUpdate() {

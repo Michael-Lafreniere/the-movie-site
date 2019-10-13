@@ -18,43 +18,35 @@ function generateTMDbUrl(path, params = {}) {
   return `${TMDB_API_URL}${path}?${query}`;
 }
 
-async function handleTMDbApiCall(url) {
-  const res = await fetch(url);
-  const data = await res.json();
-  if (!res.ok) {
-    throwCommonError(res);
-  }
-  return data;
-}
+export const fetchData = (func, result) => {
+  fetch(func)
+    .then(res => res.json())
+    .then(data => {
+      result(data);
+    })
+    .catch(err => {
+      throwCommonError(err);
+    });
+};
 
 export function getTMDbMovie(movieID) {
-  const url = generateTMDbUrl(`movie/${movieID}`);
-  return handleTMDbApiCall(url);
-}
-
-export function searchTMDbMovies(searchTerm) {
-  const url = `https://api.themoviedb.org/3/search/movie?query=${searchTerm}&api_key=${process.env.REACT_APP_TMDB_V3_API_KEY}`;
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`movie/${movieID}`);
 }
 
 export function getTMDbVideos(movieID) {
-  const url = generateTMDbUrl(`movie/${movieID}/videos`);
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`movie/${movieID}/videos`);
 }
 
 export function getTMDbCastCrewInfo(movieID) {
-  const url = generateTMDbUrl(`movie/${movieID}/credits`);
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`movie/${movieID}/credits`);
 }
 
 export function getTMDbPersonInfo(personID) {
-  const url = generateTMDbUrl(`person/${personID}`);
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`person/${personID}`);
 }
 
 export const getTMDbSocialMediaInfo = personID => {
-  const url = generateTMDbUrl(`person/${personID}/external_ids`);
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`person/${personID}/external_ids`);
 };
 
 export function getTMDbPopularMovies(page = 1) {
@@ -77,18 +69,8 @@ export function getTMDbUpcomingMovies(page = 1) {
   return generateTMDbUrl('movie/upcoming', { page });
 }
 
-export function getTMDbCastCrewImageURL(picture_path) {
-  return handleTMDbApiCall(`${TMDB_CAST_CREW_URL}${picture_path}`);
-}
-
 export function getTMDbReviews(movieID) {
-  const url = generateTMDbUrl(`movie/${movieID}/reviews`);
-  return handleTMDbApiCall(url);
-}
-
-export function getTMDbMovieGenre() {
-  const url = generateTMDbUrl('genre/movie/list');
-  return handleTMDbApiCall(url);
+  return generateTMDbUrl(`movie/${movieID}/reviews`);
 }
 
 export function throwCommonError(data) {
