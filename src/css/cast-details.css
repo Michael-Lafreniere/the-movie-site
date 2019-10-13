@@ -56,12 +56,12 @@
 .cast-card .bio {
   grid-area: bio;
   font-size: 1.25rem;
-  color: var(--light-accent);
+  color: var(--text-color);
   background: transparent;
 }
 
 .cast-card .bio .text {
-  color: var(--alt-text-color);
+  color: var(--light-accent);
   font-size: 0.85rem;
   padding: 2% 2% 0 0;
   background: inherit;
