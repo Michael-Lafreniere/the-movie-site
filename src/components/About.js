@@ -28,7 +28,7 @@ export const About = ({ toggleAbout }) => (
               className="white-to-yellow-hover-text icon"
             />
           </a>
-          <a href="http://www.twitter.com/">
+          <a href="https://twitter.com/MikeCodingGuy">
             <FontAwesomeIcon
               icon={faTwitter}
               className="white-to-yellow-hover-text icon"
