@@ -10,7 +10,7 @@ The Movie Site is a ReactJS Demostration site I made for my portfolio. It uses [
 
 ## Installation/Usage
 
-[node.js](http://nodejs.org/download/) is required to get `npm`. Use the package manager [npm](https://pip.pypa.io/en/stable/) to install/run the-movie-site.
+[node.js](http://nodejs.org/download/) is required to get `npm`. Use the package manager [npm](https://www.npmjs.com) to install/run the-movie-site.
 
 1. Clone the repo: `git@github.com:Michael-Lafreniere/the-movie-site.git`
 2. `cd the-movie-site`
